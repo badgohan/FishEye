@@ -3,21 +3,25 @@ function photographerTemplate(data) {
 
     const picture = `assets/photographers/${portrait}`;
 
+    const lien = document.createElement('a');
+    lien.setAttribute("href", `photographer.html?id=${id}`);
+    lien.classList.add('photographer_link');
+    const article = document.createElement( 'article' );
+    const img = document.createElement( 'img' );
+    img.setAttribute("src", picture)
+    const h2 = document.createElement( 'h2' );
+    h2.textContent = name;
+    const localisation = document.createElement('h3');
+    localisation.textContent = `${city}, ${country}`;
+    const accroche = document.createElement('blockquote');
+    accroche.textContent = tagline;
+    const tarif = document.createElement('p');
+    tarif.textContent = `${price}€/jour`;
+
+    const informations = document.createElement('div');
+    informations.classList.add('informations_photographe');
+
     function getUserCardDOM() {
-        const lien = document.createElement('a');
-        lien.setAttribute("href", `photographer.html?${id}`);
-        lien.classList.add('photographer_link');
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        const localisation = document.createElement('h3');
-        localisation.textContent = `${city}, ${country}`;
-        const accroche = document.createElement('blockquote');
-        accroche.textContent = tagline;
-        const tarif = document.createElement('p');
-        tarif.textContent = `${price}€/jour`;
 
         lien.appendChild(article);
         article.appendChild(img);
@@ -28,5 +32,17 @@ function photographerTemplate(data) {
 
         return (lien);
     }
-    return { id, name, picture, city, country, tagline, price, getUserCardDOM }
+
+    function getUserPageDOM() {
+        informations.appendChild(h2);
+        informations.appendChild(localisation);
+        informations.appendChild(accroche);
+
+        return (informations);
+    }
+
+    function getUserImg() {
+        return (img);
+    }
+    return { id, name, picture, city, country, tagline, price, getUserCardDOM, getUserPageDOM, getUserImg}
 }
