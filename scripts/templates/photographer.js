@@ -2,7 +2,9 @@ function photographerTemplate(data) {
     const { id, name, portrait, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
+    const pictures = `assets/photos/Sample Photos/${id}`;
 
+    // Création des éléments de la page d'accueil
     const lien = document.createElement('a');
     lien.setAttribute("href", `photographer.html?id=${id}`);
     lien.classList.add('photographer_link');
@@ -18,8 +20,15 @@ function photographerTemplate(data) {
     const tarif = document.createElement('p');
     tarif.textContent = `${price}€/jour`;
 
+    // Ajout des éléments pour le header de la page photographe
     const informations = document.createElement('div');
     informations.classList.add('informations_photographe');
+
+    // Ajout des éléments pour l'affichage des photos des phographes
+    const photos = document.createElement('img');
+    photos.setAttribute("src", pictures);
+    const title = document.createElement('p');
+    const like = document.createElement('div');
 
     function getUserCardDOM() {
 
@@ -44,5 +53,13 @@ function photographerTemplate(data) {
     function getUserImg() {
         return (img);
     }
-    return { id, name, picture, city, country, tagline, price, getUserCardDOM, getUserPageDOM, getUserImg}
+
+    function getUserPhotos() {
+        article.appendChild(photos);
+        article.appendChild(title);
+        article.appendChild(like);
+
+        return (article);
+    }
+    return { id, name, picture, city, country, tagline, price, getUserCardDOM, getUserPageDOM, getUserImg, getUserPhotos}
 }
