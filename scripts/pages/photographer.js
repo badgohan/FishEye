@@ -13,8 +13,12 @@ async function displayData(photographers) {
 
     let photographerSelectionne = photographers.find(photographer => photographer.id == photographerId);
     const photographerModel = photographerTemplate(photographerSelectionne);
-    const userCardDOM = photographerModel.getUserCardDOM();
-    photographerHeader.appendChild(userCardDOM);
+    const userPageDOM = photographerModel.getUserPageDOM();
+    const userImg = photographerModel.getUserImg();
+    photographerHeader.appendChild(userPageDOM);
+    photographerHeader.appendChild(userImg);
+
+    photographerHeader.insertBefore(userPageDOM, photographerHeader.firstChild );
 }
 
 async function init() {
