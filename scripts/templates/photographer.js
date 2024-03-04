@@ -1,16 +1,17 @@
-function photographerTemplate(data) {
+function photographerTemplate(data, data2) {
     const { id, name, portrait, city, country, tagline, price } = data;
+    const { photographerId, image} = data2;
 
     const picture = `assets/photographers/${portrait}`;
-    const pictures = `assets/photos/Sample Photos/${id}`;
-
+    const photosPhotographe =  `assets/images/photos/${id}/${image}`;
+    
     // Création des éléments de la page d'accueil
     const lien = document.createElement('a');
     lien.setAttribute("href", `photographer.html?id=${id}`);
     lien.classList.add('photographer_link');
     const article = document.createElement( 'article' );
     const img = document.createElement( 'img' );
-    img.setAttribute("src", picture)
+    img.setAttribute("src", picture);
     const h2 = document.createElement( 'h2' );
     h2.textContent = name;
     const localisation = document.createElement('h3');
@@ -25,8 +26,9 @@ function photographerTemplate(data) {
     informations.classList.add('informations_photographe');
 
     // Ajout des éléments pour l'affichage des photos des phographes
+    const portfolio = document.createElement('div');
     const photos = document.createElement('img');
-    photos.setAttribute("src", pictures);
+    img.setAttribute("src", photosPhotographe);
     const title = document.createElement('p');
     const like = document.createElement('div');
 
@@ -55,11 +57,11 @@ function photographerTemplate(data) {
     }
 
     function getUserPhotos() {
-        article.appendChild(photos);
-        article.appendChild(title);
-        article.appendChild(like);
+        portfolio.appendChild(photos);
+        portfolio.appendChild(title);
+        portfolio.appendChild(like);
 
-        return (article);
+        return (portfolio);
     }
     return { id, name, picture, city, country, tagline, price, getUserCardDOM, getUserPageDOM, getUserImg, getUserPhotos}
 }
