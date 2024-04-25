@@ -51,25 +51,34 @@ function photographerTemplate(data) {
 }
 
 function mediasTemplate(data2) {
-    const {photographerId, title, image } = data2;
+    const {photographerId, title, image, video } = data2;
     
     console.log("data2 TEMPLATE:", data2);
     console.log("photographerId: ", photographerId);
     // Ajout des éléments pour l'affichage des photos des phographes
     const portfolio = document.createElement('div');
+    
     const photos = document.createElement('img');
+    photos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${image}`);
+    const videos = document.createElement('video');
+    videos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${video}`);
     const titre = document.createElement('p');
     titre.textContent = title;
     console.log(title);
     const like = document.createElement('div');
 
     function getUserPhotos() {
-        portfolio.appendChild(photos);
+        if (photos !== undefined) {
+            portfolio.appendChild(photos);
+        }
+        if (videos !== undefined) {
+            portfolio.appendChild(videos);
+        }
         portfolio.appendChild(titre);
         portfolio.appendChild(like);
 
         return (portfolio);
     }
 
-    return { photographerId, title, image, getUserPhotos}
+    return { photographerId, title, image, video, getUserPhotos}
 }
