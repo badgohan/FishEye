@@ -9,7 +9,6 @@ async function getPhotographers() {
 
     console.log("Photographers:", photographers);
     console.log("Media:", media);
-    // et bien retourner le tableau photographers seulement une fois récupéré
     return {photographers, media };
 }
 
@@ -23,20 +22,25 @@ async function displayData(photographers, media) {
 
     let photographerSelectionne = photographers.find(photographer => photographer.id == photographerId);
     let mediaPhotographe = media.filter(photos => photos.photographerId == photographerId)
+    
     console.log("Photographer Selectionne:", photographerSelectionne);
     console.log("Media du photographe:", mediaPhotographe);
     
-    const photographerModel = photographerTemplate(photographerSelectionne, mediaPhotographe);
+    const photographerModel = photographerTemplate(photographerSelectionne);
     const userPageDOM = photographerModel.getUserPageDOM();
     const userImg = photographerModel.getUserImg();
-    const userPhotos = photographerModel.getUserPhotos();
+
+    mediaPhotographe.forEach(medias => {
+        const photographerMediaModel = mediasTemplate(medias);
+        const usermedia = photographerMediaModel.getUserPhotos();
+        photographerMedias.appendChild(usermedia);
+    });
+
     photographerHeader.appendChild(userPageDOM);
     photographerHeader.appendChild(userImg);
     photographerHeader.insertBefore(userPageDOM, photographerHeader.firstChild );
 
 
-
-    photographerMedias.appendChild(userPhotos);
 }
 
 async function init() {
