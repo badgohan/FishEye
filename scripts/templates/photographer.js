@@ -59,19 +59,19 @@ function mediasTemplate(data2) {
     const portfolio = document.createElement('div');
     
     const photos = document.createElement('img');
-    photos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${image}`);
     const videos = document.createElement('video');
-    videos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${video}`);
     const titre = document.createElement('p');
     titre.textContent = title;
     console.log(title);
     const like = document.createElement('div');
 
     function getUserPhotos() {
-        if (photos !== undefined) {
+        if (image !== undefined) {
+            photos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${image}`);
             portfolio.appendChild(photos);
         }
-        if (videos !== undefined) {
+        if (video !== undefined) {
+            videos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${video}`);
             portfolio.appendChild(videos);
         }
         portfolio.appendChild(titre);
