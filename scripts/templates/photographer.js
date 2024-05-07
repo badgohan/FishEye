@@ -56,8 +56,9 @@ function mediasTemplate(data2) {
     console.log("data2 TEMPLATE:", data2);
     console.log("photographerId: ", photographerId);
     // Ajout des éléments pour l'affichage des photos des phographes
-    const portfolio = document.createElement('div');
-    
+
+    const vignette = document.createElement('div');
+    vignette.classList.add('vignette');
     const photos = document.createElement('img');
     const videos = document.createElement('video');
     const titre = document.createElement('p');
@@ -68,16 +69,16 @@ function mediasTemplate(data2) {
     function getUserPhotos() {
         if (image !== undefined) {
             photos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${image}`);
-            portfolio.appendChild(photos);
+            vignette.appendChild(photos);
         }
         if (video !== undefined) {
             videos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${video}`);
-            portfolio.appendChild(videos);
+            vignette.appendChild(videos);
         }
-        portfolio.appendChild(titre);
-        portfolio.appendChild(like);
+        vignette.appendChild(titre);
+        vignette.appendChild(like);
 
-        return (portfolio);
+        return (vignette);
     }
 
     return { photographerId, title, image, video, getUserPhotos}

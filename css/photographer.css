@@ -119,3 +119,27 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+.porfolio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-right: 100px;
+
+}
+.vignette {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.vignette img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.vignette video {
+    height: 300px;
+    object-fit: cover;
+}
