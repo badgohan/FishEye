@@ -51,7 +51,7 @@ function photographerTemplate(data) {
 }
 
 function mediasTemplate(data2) {
-    const {photographerId, title, image, video } = data2;
+    const {photographerId, title, image, video, likes } = data2;
     
     console.log("data2 TEMPLATE:", data2);
     console.log("photographerId: ", photographerId);
@@ -60,11 +60,15 @@ function mediasTemplate(data2) {
     const vignette = document.createElement('div');
     vignette.classList.add('vignette');
     const photos = document.createElement('img');
+    photos.classList.add('vignette_img');
     const videos = document.createElement('video');
+    const infoPhotos = document.createElement('div');
+    infoPhotos.classList.add('vignette_information');
     const titre = document.createElement('p');
     titre.textContent = title;
-    console.log(title);
-    const like = document.createElement('div');
+    const nbLike = document.createElement('p');
+    nbLike.classList.add('nombre_like');
+    nbLike.textContent = likes;
 
     function getUserPhotos() {
         if (image !== undefined) {
@@ -75,11 +79,13 @@ function mediasTemplate(data2) {
             videos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${video}`);
             vignette.appendChild(videos);
         }
-        vignette.appendChild(titre);
-        vignette.appendChild(like);
+        infoPhotos.appendChild(titre);
+        infoPhotos.appendChild(nbLike);
+
+        vignette.appendChild(infoPhotos);
 
         return (vignette);
     }
 
-    return { photographerId, title, image, video, getUserPhotos}
+    return { photographerId, title, image, video, likes, getUserPhotos}
 }
