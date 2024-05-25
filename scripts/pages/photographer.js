@@ -14,7 +14,7 @@ async function getPhotographers() {
 
 async function displayData(photographers, media) {
     const photographerHeader = document.querySelector(".photograph-header");
-    const photographerMedias = document.querySelector(".photograph-medias");
+    const photographerMedias = document.querySelector(".porfolio");
 
     console.log("Photographer ID:", photographerId);
     console.log("Photographers:", photographers);

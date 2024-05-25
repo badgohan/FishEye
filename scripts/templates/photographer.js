@@ -51,34 +51,41 @@ function photographerTemplate(data) {
 }
 
 function mediasTemplate(data2) {
-    const {photographerId, title, image, video } = data2;
+    const {photographerId, title, image, video, likes } = data2;
     
     console.log("data2 TEMPLATE:", data2);
     console.log("photographerId: ", photographerId);
     // Ajout des éléments pour l'affichage des photos des phographes
-    const portfolio = document.createElement('div');
-    
+
+    const vignette = document.createElement('div');
+    vignette.classList.add('vignette');
     const photos = document.createElement('img');
-    photos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${image}`);
+    photos.classList.add('vignette_img');
     const videos = document.createElement('video');
-    videos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${video}`);
+    const infoPhotos = document.createElement('div');
+    infoPhotos.classList.add('vignette_information');
     const titre = document.createElement('p');
     titre.textContent = title;
-    console.log(title);
-    const like = document.createElement('div');
+    const nbLike = document.createElement('p');
+    nbLike.classList.add('nombre_like');
+    nbLike.textContent = likes;
 
     function getUserPhotos() {
-        if (photos !== undefined) {
-            portfolio.appendChild(photos);
+        if (image !== undefined) {
+            photos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${image}`);
+            vignette.appendChild(photos);
         }
-        if (videos !== undefined) {
-            portfolio.appendChild(videos);
+        if (video !== undefined) {
+            videos.setAttribute("src", `assets/photos/Sample_Photos/${photographerId}/${video}`);
+            vignette.appendChild(videos);
         }
-        portfolio.appendChild(titre);
-        portfolio.appendChild(like);
+        infoPhotos.appendChild(titre);
+        infoPhotos.appendChild(nbLike);
 
-        return (portfolio);
+        vignette.appendChild(infoPhotos);
+
+        return (vignette);
     }
 
-    return { photographerId, title, image, video, getUserPhotos}
+    return { photographerId, title, image, video, likes, getUserPhotos}
 }

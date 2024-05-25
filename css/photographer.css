@@ -119,3 +119,40 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+.porfolio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-right: 100px;
+
+}
+.vignette {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.vignette .vignette_img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.vignette video {
+    height: 300px;
+    object-fit: cover;
+}
+
+.vignette .vignette_information {
+    display: flex;
+}
+
+.vignette .vignette_information .nombre_like::after {
+    font-family: "Font Awesome 5 Free";
+    content: "/f004"
+}
+.vignette p {
+    margin: 0;
+    color: #901C1C;
+}
