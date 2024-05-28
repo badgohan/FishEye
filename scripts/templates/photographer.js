@@ -47,7 +47,7 @@ function photographerTemplate(data) {
         return (img);
     }
 
-    return { id, name, picture, city, country, tagline, price, getUserCardDOM, getUserPageDOM, getUserImg}
+    return { id, name, picture, city, country, tagline, price, tarif, getUserCardDOM, getUserPageDOM, getUserImg}
 }
 
 function mediasTemplate(data2) {
@@ -90,5 +90,9 @@ function mediasTemplate(data2) {
         return (vignette);
     }
 
-    return { photographerId, title, image, video, likes, totalLikes, getUserPhotos}
+    function getUserLike() {
+        
+    }
+
+    return { photographerId, title, image, video, likes, getUserPhotos}
 }

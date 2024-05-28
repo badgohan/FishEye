@@ -14,6 +14,7 @@ async function displayData(photographers, media) {
     const photographerHeader = document.querySelector(".photograph-header");
     const photographerMedias = document.querySelector(".porfolio");
     const photographerEncart = document.querySelector("aside");
+    const photographerTotalLikes = document.querySelector(".nbLikes");
 
     let photographerSelectionne = photographers.find(photographer => photographer.id == photographerId);
 
@@ -22,6 +23,7 @@ async function displayData(photographers, media) {
     const photographerModel = photographerTemplate(photographerSelectionne);
     const userPageDOM = photographerModel.getUserPageDOM();
     const userImg = photographerModel.getUserImg();
+    const userTarif = photographerModel.tarif;
 
     let nbTotalLikes = 0;
 
@@ -30,9 +32,6 @@ async function displayData(photographers, media) {
         const photographerMediaModel = mediasTemplate(medias);
         const usermedia = photographerMediaModel.getUserPhotos();
         nbTotalLikes += photographerMediaModel.likes;
-        
-        console.log("likes dans pages", photographerMediaModel.likes);
-        console.log("userLikes", nbTotalLikes);
         photographerMedias.appendChild(usermedia);
     });
 
@@ -45,7 +44,10 @@ async function displayData(photographers, media) {
     photographerNameModal.textContent = photographerSelectionne.name;
 
     // Affichage du nombre de likes et du tarif
-    photographerEncart.appendChild()
+    photographerTotalLikes.textContent = nbTotalLikes;
+    photographerEncart.appendChild(photographerTotalLikes);
+    photographerEncart.appendChild(userTarif);
+    console.log("tarif", userTarif);
 
 }
 
