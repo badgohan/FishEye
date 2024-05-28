@@ -23,25 +23,25 @@
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
+          <h2>Contactez-moi <em class="nomPhotographe"></em></h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input class="text-control" type="text" id="firstname" name="firstname">
 					</div>
           <div>
 						<label>Nom</label>
-						<input />
+						<input class="text-control" type="text" id="lastname" name="lastname">
 					</div>
           <div>
 						<label>Email</label>
-						<input />
+						<input class="text-control" type="email" id="email" name="email">
 					</div>
           <div>
 						<label>Votre message</label>
-						<input />
+						<textarea id="message" name="message" rows="4" cols="50"></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>

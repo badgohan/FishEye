@@ -7,8 +7,6 @@ async function getPhotographers() {
 
     const { photographers, media} = data;
 
-    console.log("Photographers:", photographers);
-    console.log("Media:", media);
     return {photographers, media };
 }
 
@@ -21,6 +19,7 @@ async function displayData(photographers, media) {
     console.log("Media:", media);
 
     let photographerSelectionne = photographers.find(photographer => photographer.id == photographerId);
+
     let mediaPhotographe = media.filter(photos => photos.photographerId == photographerId)
     
     console.log("Photographer Selectionne:", photographerSelectionne);
@@ -40,6 +39,9 @@ async function displayData(photographers, media) {
     photographerHeader.appendChild(userImg);
     photographerHeader.insertBefore(userPageDOM, photographerHeader.firstChild );
 
+    // Affichage du nom dans la modal de contact
+    const photographerNameModal = document.querySelector(".nomPhotographe");
+    photographerNameModal.textContent = photographerSelectionne.name;
 
 }
 
