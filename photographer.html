@@ -31,15 +31,30 @@
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
+          <h2>Contactez-moi <em class="nomPhotographe"></em></h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
-					<div>
+					<div class="formData" data-error-visible="false" data-error="">
 						<label>Prénom</label>
-						<input />
+						<input class="text-control" type="text" id="firstname" name="firstname">
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <div class="formData" data-error-visible="false" data-error="">
+						<label>Nom</label>
+						<input class="text-control" type="text" id="lastname" name="lastname">
+					</div>
+          <div class="formData" data-error-visible="false" data-error="">
+						<label>Email</label>
+						<input class="text-control" type="email" id="email" name="email">
+					</div>
+          <div class="formData" data-error-visible="false" data-error="">
+						<label>Votre message</label>
+						<textarea id="message" name="message" rows="4" cols="50"></textarea>
+					</div>
+          <button class="contact_button" type="button" onclick="validate()">Envoyer</button>
+          <div id="successMessage">
+            <span>Merci pour votre inscription</span>
+          </div>
 				</form>
 			</div>
 		</div>
