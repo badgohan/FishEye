@@ -53,8 +53,6 @@ function photographerTemplate(data) {
 function mediasTemplate(data2) {
     const {photographerId, title, image, video, likes } = data2;
     
-    console.log("data2 TEMPLATE:", data2);
-    console.log("photographerId: ", photographerId);
     // Ajout des éléments pour l'affichage des photos des phographes
 
     const vignette = document.createElement('div');
@@ -69,6 +67,11 @@ function mediasTemplate(data2) {
     const nbLike = document.createElement('p');
     nbLike.classList.add('nombre_like');
     nbLike.textContent = likes;
+    
+
+    // Elements de l'encart
+    const totalLikes = document.createElement('p');
+    totalLikes.classList.add('likes_encart');
 
     function getUserPhotos() {
         if (image !== undefined) {
@@ -87,5 +90,5 @@ function mediasTemplate(data2) {
         return (vignette);
     }
 
-    return { photographerId, title, image, video, likes, getUserPhotos}
+    return { photographerId, title, image, video, likes, totalLikes, getUserPhotos}
 }
