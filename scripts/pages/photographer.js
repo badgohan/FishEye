@@ -13,25 +13,25 @@ async function getPhotographers() {
 async function displayData(photographers, media) {
     const photographerHeader = document.querySelector(".photograph-header");
     const photographerMedias = document.querySelector(".porfolio");
-
-    console.log("Photographer ID:", photographerId);
-    console.log("Photographers:", photographers);
-    console.log("Media:", media);
+    const photographerEncart = document.querySelector("aside");
+    const photographerTotalLikes = document.querySelector(".nbLikes");
 
     let photographerSelectionne = photographers.find(photographer => photographer.id == photographerId);
 
     let mediaPhotographe = media.filter(photos => photos.photographerId == photographerId)
     
-    console.log("Photographer Selectionne:", photographerSelectionne);
-    console.log("Media du photographe:", mediaPhotographe);
-    
     const photographerModel = photographerTemplate(photographerSelectionne);
     const userPageDOM = photographerModel.getUserPageDOM();
     const userImg = photographerModel.getUserImg();
+    const userTarif = photographerModel.tarif;
+
+    let nbTotalLikes = 0;
 
     mediaPhotographe.forEach(medias => {
+        // Récupère chacun des médias du photographes et leur applique le template
         const photographerMediaModel = mediasTemplate(medias);
         const usermedia = photographerMediaModel.getUserPhotos();
+        nbTotalLikes += photographerMediaModel.likes;
         photographerMedias.appendChild(usermedia);
     });
 
@@ -42,6 +42,12 @@ async function displayData(photographers, media) {
     // Affichage du nom dans la modal de contact
     const photographerNameModal = document.querySelector(".nomPhotographe");
     photographerNameModal.textContent = photographerSelectionne.name;
+
+    // Affichage du nombre de likes et du tarif
+    photographerTotalLikes.textContent = nbTotalLikes;
+    photographerEncart.appendChild(photographerTotalLikes);
+    photographerEncart.appendChild(userTarif);
+    console.log("tarif", userTarif);
 
 }
 
